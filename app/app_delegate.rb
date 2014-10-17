@@ -14,9 +14,28 @@ class AppDelegate
     # # --- Chapter 3 ---
 
 
-    # # Changed in Chapter 4
+    # # Changed in Chapter 4 (Nav Controller)
+    # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
+    # @window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
+    # # --- Chapter 4 ---
+
+    # # Changed in Chapter 4 (Tab Controller)
     controller = TapController.alloc.initWithNibName(nil, bundle: nil)
-    @window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
+    nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
+
+   
+
+
+
+    other_controller = UIViewController.alloc.initWithNibName(nil, bundle: nil)
+    other_controller.title = "Other"
+    other_controller.view.backgroundColor = UIColor.purpleColor 
+
+
+    tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    tab_controller.viewControllers = [nav_controller, other_controller]
+    @window.rootViewController = tab_controller
+
     # # --- Chapter 4 ---
 
 
