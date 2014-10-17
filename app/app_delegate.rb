@@ -19,7 +19,7 @@ class AppDelegate
     # @window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
     
 
-    # # --- Chapter 4 ---
+    # # --- Chapter 4 Nav and Tab Controller---
 
     # # Changed in Chapter 4 (Tab Controller)
     # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
@@ -37,16 +37,42 @@ class AppDelegate
     # # --- Chapter 4 ---
 
 
-    # # --- Chapter 5 ---
-    controller = TapController.alloc.initWithNibName(nil, bundle: nil)
-    nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
-    alphabet_controller = AlphabetController.alloc.initWithNibName(nil, bundle: nil)
+    # # # --- Chapter 5 - Table View ---
+    # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
+    # nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
+    # alphabet_controller = AlphabetController.alloc.initWithNibName(nil, bundle: nil)
 
-    tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
-    tab_controller.viewControllers = [alphabet_controller, nav_controller]
-    @window.rootViewController = tab_controller
+    # tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    # tab_controller.viewControllers = [alphabet_controller, nav_controller]
+    # @window.rootViewController = tab_controller
+
+    # # # --- Chapter 5 ---
+
+    # # --- Chapter 6 - Animation ---
+
+    # the points we'll be animating to
+    @points = [[0, 0], [50, 0], [0, 50], [50, 50]]
+    @current_index = 0
+
+    # usual method of adding views to our window
+    @view = UIView.alloc.initWithFrame([@points[@current_index], [100,100]])
+    @view.backgroundColor = UIColor.blueColor
+    @window.addSubview(@view)
+
+    animate_to_next_point
 
 
+
+
+
+
+    # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
+    # nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
+    # alphabet_controller = AlphabetController.alloc.initWithNibName(nil, bundle: nil)
+
+    # tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    # tab_controller.viewControllers = [alphabet_controller, nav_controller]
+    # @window.rootViewController = tab_controller
 
     # # --- Chapter 5 ---
 
@@ -71,5 +97,27 @@ class AppDelegate
     # # --- Chapter 2 ---
 
     true
+  end
+
+
+  def animate_to_next_point
+    @current_index += 1
+
+    # this keeps it in the right range
+    @current_index = @current_index % @points.count 
+
+
+    UIView.animateWithDuration(2,
+      delay: 1,
+      options: UIViewAnimationOptionCurveLinear,
+      # options: UIVIewAnimationOptionCurveEaseInOut,
+      animations: lambda {
+        @view.frame = [@points[@current_index], [100,100]]
+        },
+      completion: lambda { |finished|
+        self.animate_to_next_point
+      }
+    )
+
   end
 end
