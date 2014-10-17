@@ -17,26 +17,38 @@ class AppDelegate
     # # Changed in Chapter 4 (Nav Controller)
     # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
     # @window.rootViewController = UINavigationController.alloc.initWithRootViewController(controller)
+    
+
     # # --- Chapter 4 ---
 
     # # Changed in Chapter 4 (Tab Controller)
-    controller = TapController.alloc.initWithNibName(nil, bundle: nil)
-    nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
+    # controller = TapController.alloc.initWithNibName(nil, bundle: nil)
+    # nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
 
-   
-
-
-
-    other_controller = UIViewController.alloc.initWithNibName(nil, bundle: nil)
-    other_controller.title = "Other"
-    other_controller.view.backgroundColor = UIColor.purpleColor 
+    # other_controller = UIViewController.alloc.initWithNibName(nil, bundle: nil)
+    # other_controller.title = "Other"
+    # other_controller.view.backgroundColor = UIColor.purpleColor 
 
 
-    tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
-    tab_controller.viewControllers = [nav_controller, other_controller]
-    @window.rootViewController = tab_controller
+    # tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    # tab_controller.viewControllers = [nav_controller, other_controller]
+    # @window.rootViewController = tab_controller
 
     # # --- Chapter 4 ---
+
+
+    # # --- Chapter 5 ---
+    controller = TapController.alloc.initWithNibName(nil, bundle: nil)
+    nav_controller = UINavigationController.alloc.initWithRootViewController(controller)
+    alphabet_controller = AlphabetController.alloc.initWithNibName(nil, bundle: nil)
+
+    tab_controller = UITabBarController.alloc.initWithNibName(nil, bundle: nil)
+    tab_controller.viewControllers = [alphabet_controller, nav_controller]
+    @window.rootViewController = tab_controller
+
+
+
+    # # --- Chapter 5 ---
 
 
     # # Changed in Chapter 2
